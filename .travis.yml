@@ -2,19 +2,24 @@ dist: xenial
 language: python
 python:
 - '3.6'
-env:
-  matrix:
-  - ENV='dev'
-  - ENV='qa'
-  global:
-  - MY_GLOBAL='my-global'
 stages:
 - name: test
+- name: deploy
 jobs:
   include:
   - stage: test
     script:
-    - echo "TRAVIS_BRANCH - $TRAVIS_BRANCH"
-    - echo "TRAVIS_PULL_REQUEST_BRANCH - ${TRAVIS_PULL_REQUEST_BRANCH}"
-    - echo "TRAVIS_PULL_REQUEST - ${TRAVIS_PULL_REQUEST}"
-    - echo do-nothing
+    - ./base.sh
+    - echo "testing"
+  - stage: deploy
+    env:
+    - ENV=dev
+    script:
+    - ./base.sh
+    - echo "deploying to ${ENV}"
+  - stage: deploy
+    env:
+    - ENV=qa
+    script:
+    - ./base.sh
+    - echo "deploying to ${ENV}"
