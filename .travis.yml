@@ -2,9 +2,6 @@ dist: xenial
 language: python
 python:
 - '3.6'
-branches:
-  only:
-  - master
 stages:
 - name: test
 - name: deploy
@@ -20,9 +17,11 @@ jobs:
     script:
     - ./base.sh
     - echo "deploying to ${ENV}"
+    if: branch = master
   - stage: deploy
     env:
     - ENV=qa
     script:
     - ./base.sh
     - echo "deploying to ${ENV}"
+    if: branch = master
