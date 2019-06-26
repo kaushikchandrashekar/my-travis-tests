@@ -8,5 +8,5 @@ jobs:
   include:
   - stage: test
     script:
-    - some-command-not-existing
+    - some-command-not-existing || travis_terminate 1
     - echo "testing"
