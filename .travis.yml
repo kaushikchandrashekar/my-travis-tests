@@ -3,9 +3,12 @@ language: python
 python:
 - '3.6'
 env:
-  matrix:
-  - MY_MATRIX='my-matrix-1'
-  - MY_MATRIX='my-matrix-2'
   global:
   - MY_GLOBAL='my-global'
-script: echo "MY_MATRIX: ${MY_MATRIX}"
+stages:
+- name: test
+jobs:
+  include:
+  - stage: test
+    script:
+    - echo do-nothing
