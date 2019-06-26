@@ -1,0 +1,18 @@
+dist: xenial
+language: python
+python:
+- '3.6'
+env:
+  matrix:
+  - MY_MATRIX='my-matrix-1'
+  - MY_MATRIX='my-matrix-2'
+  global:
+  - MY_GLOBAL='my-global'
+stages:
+- name: test
+jobs:
+  include:
+  - stage: test
+    script:
+    - echo "MY_MATRIX: ${MY_MATRIX}"
+    - echo "MY_GLOBAL: ${MY_GLOBAL}"
