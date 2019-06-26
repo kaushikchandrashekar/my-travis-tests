@@ -8,10 +8,4 @@ env:
   - MY_MATRIX='my-matrix-2'
   global:
   - MY_GLOBAL='my-global'
-stages:
-- name: test
-jobs:
-  include:
-  - stage: test
-    script:
-    - echo do-nothing
+script: echo "MY_MATRIX: ${MY_MATRIX}"
