@@ -19,6 +19,7 @@ jobs:
     script:
     - ./base.sh
     - echo "planning for ${ENV}"
+    - if [ -z "${TRAVIS_PULL_REQUEST_BRANCH}" ]; then echo "deploying to ${ENV}"; fi
     if: branch = master
   - stage: deploy
     env:
