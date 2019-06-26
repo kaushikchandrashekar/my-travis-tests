@@ -2,6 +2,9 @@ dist: xenial
 language: python
 python:
 - '3.6'
+branches:
+  only:
+  - master
 stages:
 - name: test
 - name: deploy
