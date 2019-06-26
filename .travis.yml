@@ -3,6 +3,8 @@ language: python
 python:
 - '3.6'
 env:
+  - ENV='dev'
+  - ENV='qa'
   global:
   - MY_GLOBAL='my-global'
 stages:
