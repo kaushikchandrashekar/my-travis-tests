@@ -4,22 +4,9 @@ python:
 - '3.6'
 stages:
 - name: test
-- name: deploy
 jobs:
   include:
   - stage: test
     script:
-    - ./base.sh
+    - some-command-not-existing
     - echo "testing"
-  - stage: deploy
-    env:
-    - ENV=dev
-    script:
-    - ./base.sh
-    - echo "deploying to ${ENV}"
-  - stage: deploy
-    env:
-    - ENV=qa
-    script:
-    - ./base.sh
-    - echo "deploying to ${ENV}"
