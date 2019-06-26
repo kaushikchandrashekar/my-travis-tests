@@ -14,5 +14,4 @@ jobs:
   include:
   - stage: test
     script:
-    - echo "MY_MATRIX: ${MY_MATRIX}"
-    - echo "MY_GLOBAL: ${MY_GLOBAL}"
+    - echo do-nothing
