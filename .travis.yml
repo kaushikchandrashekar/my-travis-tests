@@ -4,6 +4,7 @@ python:
 - '3.6'
 stages:
 - name: test
+- name: plan
 - name: deploy
 jobs:
   include:
