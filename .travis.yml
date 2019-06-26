@@ -11,6 +11,7 @@ jobs:
     script:
     - ./base.sh
     - echo "testing"
+    if: env(TRAVIS_PULL_REQUEST) != false
   - stage: deploy
     env:
     - ENV=dev
