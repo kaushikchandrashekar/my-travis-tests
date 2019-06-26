@@ -2,13 +2,29 @@ dist: xenial
 language: python
 python:
 - '3.6'
-env:
-  global:
-  - MY_GLOBAL='my-global'
 stages:
 - name: test
+- name: plan
+- name: deploy
 jobs:
   include:
   - stage: test
     script:
-    - echo do-nothing
+    - ./base.sh
+    - echo "testing"
+    if: type = pull_request
+  - stage: plan
+    env:
+    - ENV=dev
+    script:
+    - ./base.sh
+    - echo "planning for ${ENV}"
+    - if [ -z "${TRAVIS_PULL_REQUEST_BRANCH}" ]; then echo "deploying to ${ENV}"; fi
+    if: branch = master
+  - stage: deploy
+    env:
+    - ENV=dev
+    script:
+    - ./base.sh
+    - echo "deploying to ${ENV}"
+    if: type != pull_request AND branch = master
